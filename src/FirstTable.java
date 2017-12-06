@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -13,21 +14,26 @@ import javax.swing.JScrollPane;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import javax.swing.JButton;
+import javax.swing.JLabel;
+
 import java.awt.Insets;
 import java.awt.Dimension;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.UIManager;
 
-public class TablePanel extends JPanel{
-
+public class FirstTable extends JPanel{
 	private JTable table;
 	private JButton btnContinue;
+	private ChartInfo chartinfo;
+	private JPanel panel;
+	private GridBagConstraints gbc_panel;
 	/**
 	 * Create the panel.
 	 */
-	public TablePanel(int units, double price, double wages) {
+	public FirstTable(int units, double price, double wages) {
 		setBackground(Color.WHITE);
 
 		setSize(700,700);
@@ -36,7 +42,7 @@ public class TablePanel extends JPanel{
 				"MPP",
 				"Price",
 				"MRP",
-				"Wage (= MRC)",
+				"MRC",
 				"Total Revenue"
 		};
 
@@ -64,16 +70,34 @@ public class TablePanel extends JPanel{
 		};
 
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{259, 241, 194, 0};
-		gridBagLayout.rowHeights = new int[]{520, 0, 70, 0, 0};
+		gridBagLayout.columnWidths = new int[]{95, 400, 95, 0};
+		gridBagLayout.rowHeights = new int[]{287, 0, 100, 0, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 
 		table = new JTable(data, columnNames);
+		table.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		table.setGridColor(Color.BLACK);
 		table.setModel(tableModel);
 		JScrollPane scrollPane = new JScrollPane(table);
 		table.setFillsViewportHeight(true);
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		table.getColumnModel().getColumn(0).setPreferredWidth(100);
+		table.getColumnModel().getColumn(1).setPreferredWidth(100);
+		table.getColumnModel().getColumn(2).setPreferredWidth(100);
+		table.getColumnModel().getColumn(3).setPreferredWidth(100);
+		table.getColumnModel().getColumn(4).setPreferredWidth(100);
+		table.getColumnModel().getColumn(5).setPreferredWidth(100);
+		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+		centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+		table.getColumnModel().getColumn(0).setCellRenderer( centerRenderer );
+		table.getColumnModel().getColumn(1).setCellRenderer( centerRenderer );
+		table.getColumnModel().getColumn(2).setCellRenderer( centerRenderer );
+		table.getColumnModel().getColumn(3).setCellRenderer( centerRenderer );
+		table.getColumnModel().getColumn(4).setCellRenderer( centerRenderer );
+		table.getColumnModel().getColumn(5       ).setCellRenderer( centerRenderer );
+
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.gridwidth = 3;
 		gbc_scrollPane.insets = new Insets(0, 0, 5, 0);
@@ -84,7 +108,7 @@ public class TablePanel extends JPanel{
 
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		panel.setBackground(Color.LIGHT_GRAY);
+		panel.setBackground(UIManager.getColor("Panel.background"));
 		GridBagConstraints gbc_panel = new GridBagConstraints();
 		gbc_panel.insets = new Insets(0, 0, 5, 5);
 		gbc_panel.fill = GridBagConstraints.BOTH;
@@ -114,7 +138,9 @@ public class TablePanel extends JPanel{
 					}
 				}
 				if(tableFull()) {
-					remove(panel);
+					panel.remove(btnContinue);
+					DisplayChart();
+					panel.add(chartinfo);
 					revalidate();
 					repaint();
 				}
@@ -124,7 +150,8 @@ public class TablePanel extends JPanel{
 		panel.add(btnContinue);
 		btnContinue.setContentAreaFilled(false);
 		btnContinue.setBackground(Color.RED);
-		btnContinue.setPreferredSize(new Dimension(200, 50));
+		btnContinue.setPreferredSize(new Dimension(200, 50)); 
+	
 	}
 
 	public boolean tableFull() {
@@ -140,5 +167,27 @@ public class TablePanel extends JPanel{
 			}
 		}
 		return true;
+	}
+	private void DisplayChart() {
+		int MaxMRP = MaxMRP();
+		double MaxMPP = MaxMPP(MaxMRP);
+		double MaxProfit = MaxProfit(MaxMRP);
+		chartinfo = new ChartInfo(MaxMRP,MaxMPP,MaxProfit);
+		revalidate();
+		repaint();
+	}
+	private int MaxMRP() {
+		for (int i = 1 ; i < table.getRowCount() ; i++) {
+			if((double)table.getValueAt(i, 3) < (double)table.getValueAt(i, 4)) {
+				return (int)table.getValueAt(i-1, 0);
+			}
+		}
+		return (int) table.getValueAt(table.getRowCount()-1, 0);
+	}
+	private double MaxMPP(int MRP) {
+		return (double)table.getValueAt(MRP-1, 5) / (double)table.getValueAt(MRP-1, 2);
+	}
+	private double MaxProfit(int MRP) {
+		return (double)(table.getValueAt(MRP-1, 5)) - (int)(table.getValueAt(MRP-1, 0))*(double)(table.getValueAt(MRP-1, 4));
 	}
 }

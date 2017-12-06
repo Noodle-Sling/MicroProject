@@ -16,7 +16,7 @@ public class MyFrame extends JFrame {
 	private double price;
 	private double wage;
 	private StartScreen startscreen;
-	private TablePanel tablepanel;
+	private FirstTable firsttable;
 	private ActionListener moveOn = new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -65,8 +65,8 @@ public class MyFrame extends JFrame {
 		contentPane.removeAll();
 		contentPane.revalidate();
 		contentPane.repaint();
-		tablepanel = new TablePanel(units, price, wage);
-		contentPane.add(tablepanel);
+		firsttable = new FirstTable(units, price, wage);
+		contentPane.add(firsttable);
 	}
 
 }
