@@ -23,6 +23,9 @@ import javax.swing.border.LineBorder;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.UIManager;
+import java.awt.SystemColor;
+import java.awt.Component;
+import java.awt.Rectangle;
 
 public class FirstTable extends JPanel{
 	private JTable table;
@@ -33,7 +36,7 @@ public class FirstTable extends JPanel{
 	/**
 	 * Create the panel.
 	 */
-	public FirstTable(int units, double price, double wages) {
+	public FirstTable(int units, double price, double wages, ActionListener home) {
 		setBackground(Color.WHITE);
 
 		setSize(700,700);
@@ -70,10 +73,10 @@ public class FirstTable extends JPanel{
 		};
 
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{95, 400, 95, 0};
-		gridBagLayout.rowHeights = new int[]{287, 0, 100, 0, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.columnWidths = new int[]{150, 400, 150, 0};
+		gridBagLayout.rowHeights = new int[]{287, 44, 100, 103, 50, 0};
+		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 
 		table = new JTable(data, columnNames);
@@ -82,23 +85,17 @@ public class FirstTable extends JPanel{
 		table.setModel(tableModel);
 		JScrollPane scrollPane = new JScrollPane(table);
 		table.setFillsViewportHeight(true);
-		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		table.getColumnModel().getColumn(0).setPreferredWidth(100);
-		table.getColumnModel().getColumn(1).setPreferredWidth(100);
-		table.getColumnModel().getColumn(2).setPreferredWidth(100);
-		table.getColumnModel().getColumn(3).setPreferredWidth(100);
-		table.getColumnModel().getColumn(4).setPreferredWidth(100);
-		table.getColumnModel().getColumn(5).setPreferredWidth(100);
 		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
 		centerRenderer.setHorizontalAlignment( JLabel.CENTER );
-		table.getColumnModel().getColumn(0).setCellRenderer( centerRenderer );
-		table.getColumnModel().getColumn(1).setCellRenderer( centerRenderer );
-		table.getColumnModel().getColumn(2).setCellRenderer( centerRenderer );
-		table.getColumnModel().getColumn(3).setCellRenderer( centerRenderer );
-		table.getColumnModel().getColumn(4).setCellRenderer( centerRenderer );
-		table.getColumnModel().getColumn(5       ).setCellRenderer( centerRenderer );
+		table.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
+		table.getColumnModel().getColumn(1).setCellRenderer(centerRenderer);
+		table.getColumnModel().getColumn(2).setCellRenderer(centerRenderer);
+		table.getColumnModel().getColumn(3).setCellRenderer(centerRenderer);
+		table.getColumnModel().getColumn(4).setCellRenderer(centerRenderer);
+		table.getColumnModel().getColumn(5).setCellRenderer(centerRenderer);
 
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
+		gbc_scrollPane.gridheight = 2;
 		gbc_scrollPane.gridwidth = 3;
 		gbc_scrollPane.insets = new Insets(0, 0, 5, 0);
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
@@ -108,7 +105,8 @@ public class FirstTable extends JPanel{
 
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		panel.setBackground(UIManager.getColor("Panel.background"));
+		panel.setBackground(Color.LIGHT_GRAY);
+		panel.setLayout(null);
 		GridBagConstraints gbc_panel = new GridBagConstraints();
 		gbc_panel.insets = new Insets(0, 0, 5, 5);
 		gbc_panel.fill = GridBagConstraints.BOTH;
@@ -117,6 +115,7 @@ public class FirstTable extends JPanel{
 		add(panel, gbc_panel);
 
 		btnContinue = new JButton("Continue");
+		btnContinue.setBounds(0,0,395,95);
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				for(int row = 0; row < table.getRowCount(); row++) {
@@ -141,6 +140,7 @@ public class FirstTable extends JPanel{
 					panel.remove(btnContinue);
 					DisplayChart();
 					panel.add(chartinfo);
+					panel.setBackground(Color.WHITE);
 					revalidate();
 					repaint();
 				}
@@ -149,8 +149,27 @@ public class FirstTable extends JPanel{
 		btnContinue.setBorderPainted(false);
 		panel.add(btnContinue);
 		btnContinue.setContentAreaFilled(false);
-		btnContinue.setBackground(Color.RED);
-		btnContinue.setPreferredSize(new Dimension(200, 50)); 
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		panel_1.setBackground(Color.LIGHT_GRAY);
+		panel_1.setLayout(null);
+		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
+		gbc_panel_1.insets = new Insets(0, 0, 0, 5);
+		gbc_panel_1.fill = GridBagConstraints.BOTH;
+		gbc_panel_1.gridx = 0;
+		gbc_panel_1.gridy = 4;
+		add(panel_1, gbc_panel_1);
+		
+		JButton btnHome = new JButton("Home");
+		btnHome.setBounds(0, 0, 145, 50);
+		btnHome.setAlignmentY(Component.TOP_ALIGNMENT);
+		btnHome.setPreferredSize(new Dimension(146, 56));
+		btnHome.setContentAreaFilled(false);
+		btnHome.setBorderPainted(false);
+		btnHome.setBackground(Color.RED);
+		panel_1.add(btnHome);
+		btnHome.addActionListener(home);
 	
 	}
 

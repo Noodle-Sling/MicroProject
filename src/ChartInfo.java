@@ -1,6 +1,8 @@
 import javax.swing.JPanel;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
+
+import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.SwingConstants;
@@ -12,6 +14,7 @@ public class ChartInfo extends JPanel {
 	 */
 	public ChartInfo(int MaxMRP,double MaxMPP,double MaxProfit) {
 		setSize(400,100);
+		setBackground(Color.WHITE);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{102, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0};
