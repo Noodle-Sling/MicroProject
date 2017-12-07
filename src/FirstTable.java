@@ -32,7 +32,8 @@ public class FirstTable extends JPanel{
 	private JButton btnContinue;
 	private ChartInfo chartinfo;
 	private JPanel panel;
-	private GridBagConstraints gbc_panel;
+	private JLabel lblPleaseFillOut;
+	private GridBagConstraints gbc_lblPleaseFillOut;
 	/**
 	 * Create the panel.
 	 */
@@ -103,7 +104,7 @@ public class FirstTable extends JPanel{
 		gbc_scrollPane.gridy = 0;
 		add(scrollPane, gbc_scrollPane);
 
-		JPanel panel = new JPanel();
+		panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		panel.setBackground(Color.LIGHT_GRAY);
 		panel.setLayout(null);
@@ -113,6 +114,14 @@ public class FirstTable extends JPanel{
 		gbc_panel.gridx = 1;
 		gbc_panel.gridy = 2;
 		add(panel, gbc_panel);
+		
+		lblPleaseFillOut = new JLabel("Please fill out all MPPs before clicking continue");
+		GridBagConstraints gbc_lblPleaseFillOut = new GridBagConstraints();
+		gbc_lblPleaseFillOut.insets = new Insets(0, 0, 5, 5);
+		gbc_lblPleaseFillOut.gridx = 1;
+		gbc_lblPleaseFillOut.gridy = 3;
+		add(lblPleaseFillOut, gbc_lblPleaseFillOut);
+		lblPleaseFillOut.setVisible(false);
 
 		btnContinue = new JButton("Continue");
 		btnContinue.setBounds(0,0,395,95);
@@ -138,11 +147,17 @@ public class FirstTable extends JPanel{
 				}
 				if(tableFull()) {
 					panel.remove(btnContinue);
+					lblPleaseFillOut.setVisible(false);
+					System.out.println("fin");
 					DisplayChart();
 					panel.add(chartinfo);
 					panel.setBackground(Color.WHITE);
 					revalidate();
 					repaint();
+				}
+				else {
+					lblPleaseFillOut.setVisible(true);
+					System.out.println("done");
 				}
 			}
 		});

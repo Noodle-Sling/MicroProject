@@ -35,22 +35,25 @@ public class StartCalcScreen extends JPanel {
 		setSize(700, 700);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{150, 30, 100, 240, 180};
-		gridBagLayout.rowHeights = new int[]{90, 90, 30, 35, 35, 35, 30, 35, 227, 50};
+		gridBagLayout.rowHeights = new int[]{90, 90, 30, 35, 35, 35, 30, 50, 212, 50};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
 		setLayout(gridBagLayout);
 		
 		JTextPane txtpnMakeSureThat = new JTextPane();
 		StyledDocument doc = txtpnMakeSureThat.getStyledDocument();
-		SimpleAttributeSet center = new SimpleAttributeSet();
-		StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
-		doc.setParagraphAttributes(0, doc.getLength(), center, false);
+		SimpleAttributeSet attribs = new SimpleAttributeSet();  
+		StyleConstants.setAlignment(attribs , StyleConstants.ALIGN_CENTER);
+		StyleConstants.setFontFamily(attribs, "Lucida Grande");
+		StyleConstants.setFontSize(attribs, 20);
+		doc.setParagraphAttributes(0, doc.getLength(), attribs,true);
+		
 		txtpnMakeSureThat.setEditable(false);
 		txtpnMakeSureThat.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		txtpnMakeSureThat.setBackground(UIManager.getColor("Panel.background"));
 		txtpnMakeSureThat.setText("Make sure that all \nentered values are \nnumbers");
 		GridBagConstraints gbc_txtpnMakeSureThat = new GridBagConstraints();
-		gbc_txtpnMakeSureThat.fill = GridBagConstraints.BOTH;
+		gbc_txtpnMakeSureThat.fill = GridBagConstraints.VERTICAL;
 		gbc_txtpnMakeSureThat.insets = new Insets(0, 0, 5, 5);
 		gbc_txtpnMakeSureThat.gridx = 3;
 		gbc_txtpnMakeSureThat.gridy = 1;
@@ -109,13 +112,22 @@ public class StartCalcScreen extends JPanel {
 		add(textField_2, gbc_textField_2);
 		textField_2.setColumns(10);
 		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		panel_1.setBackground(Color.LIGHT_GRAY);
+		panel_1.setLayout(null);
+		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
+		gbc_panel_1.insets = new Insets(0, 0, 5, 5);
+		gbc_panel_1.fill = GridBagConstraints.BOTH;
+		gbc_panel_1.gridx = 3;
+		gbc_panel_1.gridy = 7;
+		add(panel_1, gbc_panel_1);
+		
 		JButton btnCalculate = new JButton("Calculate");
+		btnCalculate.setBorderPainted(false);
+		btnCalculate.setBounds(0, 0, 235, 45);
+		panel_1.add(btnCalculate);
 		btnCalculate.addActionListener(moveOn);
-		GridBagConstraints gbc_btnCalculate = new GridBagConstraints();
-		gbc_btnCalculate.insets = new Insets(0, 0, 5, 5);
-		gbc_btnCalculate.gridx = 3;
-		gbc_btnCalculate.gridy = 7;
-		add(btnCalculate, gbc_btnCalculate);
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(0, 0, 0), 2));

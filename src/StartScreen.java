@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JTextPane;
 import javax.swing.JLabel;
 import java.awt.Font;
+import javax.swing.border.LineBorder;
 
 public class StartScreen extends JPanel {
 
@@ -36,7 +37,8 @@ public class StartScreen extends JPanel {
 		add(txtpnGiveUsA, gbc_txtpnGiveUsA);
 		
 		JPanel panel1 = new JPanel();
-		panel1.setBackground(Color.GRAY);
+		panel1.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		panel1.setBackground(Color.LIGHT_GRAY);
 		panel1.setLayout(null);
 		GridBagConstraints gbc_panel1 = new GridBagConstraints();
 		gbc_panel1.insets = new Insets(0, 0, 5, 5);
@@ -46,13 +48,14 @@ public class StartScreen extends JPanel {
 		add(panel1, gbc_panel1);
 		
 		JButton btnInfo = new JButton("Info");
-		btnInfo.setBounds(0, 0, 175, 50);
+		btnInfo.setBounds(0, 0, 190, 50);
 		btnInfo.addActionListener(info);
 		panel1.add(btnInfo);
 		btnInfo.setBorderPainted(false);
 		
 		JPanel panel2 = new JPanel();
-		panel2.setBackground(Color.GRAY);
+		panel2.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		panel2.setBackground(Color.LIGHT_GRAY);
 		panel2.setLayout(null);
 		GridBagConstraints gbc_panel2 = new GridBagConstraints();
 		gbc_panel2.insets = new Insets(0, 0, 0, 5);
@@ -62,7 +65,7 @@ public class StartScreen extends JPanel {
 		add(panel2, gbc_panel2);
 		
 		JButton btnCalculator = new JButton("Calculator");
-		btnCalculator.setBounds(0, 0, 175, 50);
+		btnCalculator.setBounds(0, 0, 190, 55);
 		btnCalculator.addActionListener(calc);
 		panel2.add(btnCalculator);
 		btnCalculator.setBorderPainted(false);
