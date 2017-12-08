@@ -5,7 +5,10 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -19,10 +22,15 @@ public class MyFrame extends JFrame {
 	private FirstTable firsttable;
 	private StartScreen startscreen;
 	private InfoScreen infoscreen;
+	private JLabel background;
 	
 	private ActionListener calcScreen = new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			contentPane = new JPanel();
+			contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+			contentPane.setLayout(null);
+			setContentPane(contentPane);
 			contentPane.removeAll();
 			contentPane.revalidate();
 			contentPane.repaint();
@@ -34,6 +42,10 @@ public class MyFrame extends JFrame {
 	private ActionListener infoScreen = new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			contentPane = new JPanel();
+			contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+			contentPane.setLayout(null);
+			setContentPane(contentPane);
 			contentPane.removeAll();
 			contentPane.revalidate();
 			contentPane.repaint();
@@ -48,8 +60,12 @@ public class MyFrame extends JFrame {
 			contentPane.removeAll();
 			contentPane.revalidate();
 			contentPane.repaint();
+			setContentPane(background);
+			background.removeAll();
+			background.revalidate();
+			background.repaint();
 			startscreen = new StartScreen(calcScreen, infoScreen);
-			contentPane.add(startscreen);
+			background.add(startscreen);
 		}
 	};
 	
@@ -88,13 +104,13 @@ public class MyFrame extends JFrame {
 		setLocationRelativeTo(null);
 		setResizable(false);
 		setTitle("Micro Project");
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(null);
-		setContentPane(contentPane);
+		Icon icon = new ImageIcon("Resources/ezgif.com-optimize.gif");
+		background = new JLabel(icon);
+		background.setLayout(null);
+		setContentPane(background);
 		
 		startscreen = new StartScreen(calcScreen, infoScreen);
-		contentPane.add(startscreen);
+		background.add(startscreen);
 	}
 	
 	private void inputTable(int units, double price, double wage) {

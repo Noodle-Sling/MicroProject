@@ -144,6 +144,9 @@ public class InfoScreen extends JPanel {
 		gbc_txtpnMonopsonyRefersTo.gridy = 1;
 		panel_4.add(txtpnMonopsonyRefersTo, gbc_txtpnMonopsonyRefersTo);
 		
+		JPanel panel_5 = new JPanel();
+		tabbedPane.addTab("GRAPHS", null, panel_5, null);
+		
 
 	}
 }
