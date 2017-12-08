@@ -5,6 +5,7 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.Color;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Rectangle;
@@ -24,25 +25,26 @@ public class StartScreen extends JPanel {
 	private Image title1;
 	
 	public StartScreen(ActionListener calc, ActionListener info) {
-		setSize(700,700);
+		setOpaque(false);
+		setSize(500,500);
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{261, 180, 229, 0};
+		gridBagLayout.columnWidths = new int[]{160, 180, 160, 0};
 		gridBagLayout.rowHeights = new int[]{134, 54, 42, 55, 49, 55, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 1.0, 1.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
-		ImageIcon image = new ImageIcon("Resources/title1.jpg");
-		title1 = image.getImage();
+		//ImageIcon image = new ImageIcon("Resources/title1.jpg");
+		//title1 = image.getImage();
 		
 		JLabel txtpnGiveUsA = new JLabel();
 		txtpnGiveUsA.setFont(new Font("Monotype Corsiva", Font.BOLD, 64));
 		txtpnGiveUsA.setText("Give us a 60!");
 		GridBagConstraints gbc_txtpnGiveUsA = new GridBagConstraints();
-		gbc_txtpnGiveUsA.gridwidth = 3;
-		gbc_txtpnGiveUsA.insets = new Insets(0, 0, 5, 5);
+		gbc_txtpnGiveUsA.gridwidth = 4;
+		gbc_txtpnGiveUsA.insets = new Insets(0, 0, 5, 0);
 		gbc_txtpnGiveUsA.fill = GridBagConstraints.VERTICAL;
 		gbc_txtpnGiveUsA.gridx = 0;
-		gbc_txtpnGiveUsA.gridy = 1;
+		gbc_txtpnGiveUsA.gridy = 0;
 		add(txtpnGiveUsA, gbc_txtpnGiveUsA);
 		
 		JPanel panel1 = new JPanel();
@@ -57,7 +59,7 @@ public class StartScreen extends JPanel {
 		add(panel1, gbc_panel1);
 		
 		JButton btnInfo = new JButton("Info");
-		btnInfo.setBounds(0, 0, 190, 50);
+		btnInfo.setBounds(0, 0, 175, 50);
 		btnInfo.addActionListener(info);
 		panel1.add(btnInfo);
 		btnInfo.setBorderPainted(false);
@@ -74,16 +76,16 @@ public class StartScreen extends JPanel {
 		add(panel2, gbc_panel2);
 		
 		JButton btnCalculator = new JButton("Calculator");
-		btnCalculator.setBounds(0, 0, 190, 55);
+		btnCalculator.setBounds(0, 0, 175, 55);
 		btnCalculator.addActionListener(calc);
 		panel2.add(btnCalculator);
 		btnCalculator.setBorderPainted(false);
 		
 	}
 
-	@Override
-	protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
-			g.drawImage(title1,0,0,null);
-	}
+//	@Override
+//	protected void paintComponent(Graphics g) {
+//		super.paintComponent(g);
+//			g.drawImage(title1,0,0,null);
+//	}
 }

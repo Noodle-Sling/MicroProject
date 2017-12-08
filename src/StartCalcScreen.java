@@ -32,6 +32,7 @@ public class StartCalcScreen extends JPanel {
 	 * Create the panel.
 	 */
 	public StartCalcScreen(ActionListener moveOn, ActionListener home) {
+		setBackground(new Color(147, 112, 219));
 		setSize(700, 700);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{150, 30, 100, 240, 180};
@@ -50,7 +51,7 @@ public class StartCalcScreen extends JPanel {
 		
 		txtpnMakeSureThat.setEditable(false);
 		txtpnMakeSureThat.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		txtpnMakeSureThat.setBackground(UIManager.getColor("Panel.background"));
+		txtpnMakeSureThat.setBackground(new Color(147, 112, 219));
 		txtpnMakeSureThat.setText("Make sure that all \nentered values are \nnumbers");
 		GridBagConstraints gbc_txtpnMakeSureThat = new GridBagConstraints();
 		gbc_txtpnMakeSureThat.fill = GridBagConstraints.VERTICAL;

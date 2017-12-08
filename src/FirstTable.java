@@ -39,7 +39,7 @@ public class FirstTable extends JPanel{
 	 * Create the panel.
 	 */
 	public FirstTable(int units, double price, double wages, ActionListener home) {
-		setBackground(Color.WHITE);
+		setBackground(new Color(255, 165, 0));
 
 		setSize(700,700);
 		String[] columnNames = { 
@@ -82,10 +82,12 @@ public class FirstTable extends JPanel{
 		setLayout(gridBagLayout);
 
 		table = new JTable(data, columnNames);
+		table.setBackground(new Color(147, 112, 219));
 		table.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		table.setGridColor(Color.BLACK);
 		table.setModel(tableModel);
 		JScrollPane scrollPane = new JScrollPane(table);
+		scrollPane.setBackground(new Color(255, 165, 0));
 		table.setFillsViewportHeight(true);
 		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
 		centerRenderer.setHorizontalAlignment( JLabel.CENTER );
@@ -95,7 +97,13 @@ public class FirstTable extends JPanel{
 		table.getColumnModel().getColumn(3).setCellRenderer(centerRenderer);
 		table.getColumnModel().getColumn(4).setCellRenderer(centerRenderer);
 		table.getColumnModel().getColumn(5).setCellRenderer(centerRenderer);
+		DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
+		headerRenderer.setBackground(new Color(255, 165, 0));
 
+		for (int i = 0; i < table.getModel().getColumnCount(); i++) {
+		        table.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
+		}
+		
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.gridheight = 2;
 		gbc_scrollPane.gridwidth = 3;
@@ -152,7 +160,7 @@ public class FirstTable extends JPanel{
 					System.out.println("fin");
 					DisplayChart();
 					panel.add(chartinfo);
-					panel.setBackground(Color.WHITE);
+					panel.setBackground(new Color(255, 165, 0));
 					revalidate();
 					repaint();
 				}

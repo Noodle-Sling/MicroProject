@@ -25,6 +25,7 @@ public class InfoScreen extends JPanel {
 	 * Create the panel.
 	 */
 	public InfoScreen(ActionListener home) {
+		setBackground(new Color(255, 165, 0));
 		setLayout(null);
 		setSize(700, 700);
 		
@@ -49,6 +50,7 @@ public class InfoScreen extends JPanel {
 		add(tabbedPane);
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(new Color(147, 112, 219));
 		tabbedPane.addTab("LABOR MARKETS", null, panel, null);
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[]{88, 507, 84, 0};
@@ -58,7 +60,7 @@ public class InfoScreen extends JPanel {
 		panel.setLayout(gbl_panel);
 		
 		JTextPane txtpnLaborMarketsCan = new JTextPane();
-		txtpnLaborMarketsCan.setBackground(UIManager.getColor("Panel.background"));
+		txtpnLaborMarketsCan.setBackground(new Color(147, 112, 219));
 		txtpnLaborMarketsCan.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		txtpnLaborMarketsCan.setText("Labor markets can be perfectly competitive or some degree of monopsonistic (this calculator only works for perfectly competitive markets). A labor market is a form of resource or factor market, in which businesses hire or purchase units of a resource to produce a certain amount of product. In a perfectly competitive labor market, both the supply of labor and demand for the product are perfectly elastic, so worker wages and product prices stay the same no matter how many units of labor are employed.");
 		GridBagConstraints gbc_txtpnLaborMarketsCan = new GridBagConstraints();
@@ -69,6 +71,7 @@ public class InfoScreen extends JPanel {
 		panel.add(txtpnLaborMarketsCan, gbc_txtpnLaborMarketsCan);
 		
 		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(new Color(147, 112, 219));
 		tabbedPane.addTab("VALUE AND COST", null, panel_2, null);
 		GridBagLayout gbl_panel_2 = new GridBagLayout();
 		gbl_panel_2.columnWidths = new int[]{88, 507, 84, 0};
@@ -80,7 +83,7 @@ public class InfoScreen extends JPanel {
 		JTextPane txtpnEachAdditionalUnit = new JTextPane();
 		txtpnEachAdditionalUnit.setText("Each additional unit of labor produces a certain amount of product. This quantity is known as Marginal Physical Product (MPP): the additional product an additional unit of labor adds. Since each product is worth the same price, multiplying MPP by price gives each worker's Marginal Revenue Product (MRP), the actual value they add to the company. But each worker also has a Marginal Resource Cost (MRC), or how much value the business loses in keeping them employed.");
 		txtpnEachAdditionalUnit.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		txtpnEachAdditionalUnit.setBackground(SystemColor.window);
+		txtpnEachAdditionalUnit.setBackground(new Color(147, 112, 219));
 		GridBagConstraints gbc_txtpnEachAdditionalUnit = new GridBagConstraints();
 		gbc_txtpnEachAdditionalUnit.fill = GridBagConstraints.BOTH;
 		gbc_txtpnEachAdditionalUnit.insets = new Insets(0, 0, 5, 5);
@@ -89,6 +92,7 @@ public class InfoScreen extends JPanel {
 		panel_2.add(txtpnEachAdditionalUnit, gbc_txtpnEachAdditionalUnit);
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(147, 112, 219));
 		tabbedPane.addTab("PROFIT, BABY", null, panel_1, null);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
 		gbl_panel_1.columnWidths = new int[]{88, 507, 84, 0};
@@ -100,7 +104,7 @@ public class InfoScreen extends JPanel {
 		JTextPane txtpnFirmsAttemptTo = new JTextPane();
 		txtpnFirmsAttemptTo.setText("Firms attempt to maximize profit (revenue minus cost) in all aspects of business, and the labor market is no exception. When considering how much labor to hire, the point of profit maximization means the last unit of labor where their MRP is not less than their MRC, meaning they still add marginal value to the company. At that point, total revenue equals total product times product price, and subtracting total cost (MRC times however many workers your employ) gives PROFIT!");
 		txtpnFirmsAttemptTo.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		txtpnFirmsAttemptTo.setBackground(SystemColor.window);
+		txtpnFirmsAttemptTo.setBackground(new Color(147, 112, 219));
 		GridBagConstraints gbc_txtpnFirmsAttemptTo = new GridBagConstraints();
 		gbc_txtpnFirmsAttemptTo.fill = GridBagConstraints.BOTH;
 		gbc_txtpnFirmsAttemptTo.insets = new Insets(0, 0, 0, 5);
@@ -109,6 +113,7 @@ public class InfoScreen extends JPanel {
 		panel_1.add(txtpnFirmsAttemptTo, gbc_txtpnFirmsAttemptTo);
 		
 		JPanel panel_3 = new JPanel();
+		panel_3.setBackground(new Color(147, 112, 219));
 		tabbedPane.addTab("CHANGES", null, panel_3, null);
 		GridBagLayout gbl_panel_3 = new GridBagLayout();
 		gbl_panel_3.columnWidths = new int[]{88, 507, 84, 0};
@@ -120,7 +125,7 @@ public class InfoScreen extends JPanel {
 		JTextPane txtpnThisProfitMaximization = new JTextPane();
 		txtpnThisProfitMaximization.setText("This profit maximization point can change if a few different things occur. Labor is a resource, meaning its demand is derived from the demand of the product it produces. Specifically, resource demand is based on the productivity of that resource and the value of the commodity it's used in. For labor, the same is true: if the price of the product the labor is creating goes up, laborers' MRP goes up, so it may become more profitable to hire more labor, and vice versa. If units of labor become more productive, too (MPP increases), a business might hire more labor to maximize profit, or vice versa.");
 		txtpnThisProfitMaximization.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		txtpnThisProfitMaximization.setBackground(SystemColor.window);
+		txtpnThisProfitMaximization.setBackground(new Color(147, 112, 219));
 		GridBagConstraints gbc_txtpnThisProfitMaximization = new GridBagConstraints();
 		gbc_txtpnThisProfitMaximization.fill = GridBagConstraints.BOTH;
 		gbc_txtpnThisProfitMaximization.insets = new Insets(0, 0, 0, 5);
@@ -129,6 +134,7 @@ public class InfoScreen extends JPanel {
 		panel_3.add(txtpnThisProfitMaximization, gbc_txtpnThisProfitMaximization);
 		
 		JPanel panel_4 = new JPanel();
+		panel_4.setBackground(new Color(147, 112, 219));
 		tabbedPane.addTab("MONOPSONY", null, panel_4, null);
 		GridBagLayout gbl_panel_4 = new GridBagLayout();
 		gbl_panel_4.columnWidths = new int[]{88, 507, 84, 0};
@@ -140,7 +146,7 @@ public class InfoScreen extends JPanel {
 		JTextPane txtpnMonopsonyRefersTo = new JTextPane();
 		txtpnMonopsonyRefersTo.setText("Monopsony refers to one business having complete control over the labor market, meaning they alone decide how many people in the entire market get hired. Monopsonies can control worker wages, but they must also increase all the previous workers' wages for each additional unit of labor they hire since the labor supply is upsloping for markets and monopsonies. This means that the MRC grows faster than supply, and since profit is maximized where MRC crosses MRP, a monopsony will hire less labor than the market equilibrium dictates and pay each of them less as well (however much money they seek based on that quantity point on the supply curve). Thus, monopsonies create inefficiency.");
 		txtpnMonopsonyRefersTo.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		txtpnMonopsonyRefersTo.setBackground(SystemColor.window);
+		txtpnMonopsonyRefersTo.setBackground(new Color(147, 112, 219));
 		GridBagConstraints gbc_txtpnMonopsonyRefersTo = new GridBagConstraints();
 		gbc_txtpnMonopsonyRefersTo.fill = GridBagConstraints.BOTH;
 		gbc_txtpnMonopsonyRefersTo.insets = new Insets(0, 0, 0, 5);
@@ -149,6 +155,7 @@ public class InfoScreen extends JPanel {
 		panel_4.add(txtpnMonopsonyRefersTo, gbc_txtpnMonopsonyRefersTo);
 		
 		JPanel panel_5 = new JPanel();
+		panel_5.setBackground(new Color(147, 112, 219));
 		tabbedPane.addTab("GRAPHS", null, panel_5, null);
 		GridBagLayout gbl_panel_5 = new GridBagLayout();
 		gbl_panel_5.columnWidths = new int[]{150, 400, 150, 0};

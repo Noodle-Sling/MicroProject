@@ -15,7 +15,7 @@ public class ChartInfo extends JPanel {
 	 */
 	public ChartInfo(int MaxMRP,double MaxMPP,double MaxProfit) {
 		setSize(400,100);
-		setBackground(Color.WHITE);
+		setBackground(new Color(255, 165, 0));
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{133, 104, 30, 133, 0};
 		gridBagLayout.rowHeights = new int[]{13, 25, 24, 25, 13, 0};
