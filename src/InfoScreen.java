@@ -164,7 +164,7 @@ public class InfoScreen extends JPanel {
 		gbl_panel_5.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
 		panel_5.setLayout(gbl_panel_5);
 		
-		Icon icon = new ImageIcon("Resources/PureCompetition.jpeg"); 
+		Icon icon = new ImageIcon(getClass().getResource("/Resources/PureCompetition.jpeg")); 
 		JLabel label = new JLabel(icon);
 		GridBagConstraints gbc_label = new GridBagConstraints();
 		gbc_label.insets = new Insets(0, 0, 5, 5);
@@ -172,7 +172,7 @@ public class InfoScreen extends JPanel {
 		gbc_label.gridy = 0;
 		panel_5.add(label, gbc_label);
 		
-		Icon icon1 = new ImageIcon("Resources/Monopsony.jpg");
+		Icon icon1 = new ImageIcon(getClass().getResource("/Resources/Monopsony.jpg"));
 		JLabel lblNewLabel = new JLabel(icon1);
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		gbc_lblNewLabel.insets = new Insets(0, 0, 0, 5);

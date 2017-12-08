@@ -107,7 +107,7 @@ public class MyFrame extends JFrame {
 		setBounds(0, 0, 500, 500);
 		setResizable(false);
 		setTitle("Micro Project");
-		Icon icon = new ImageIcon("Resources/GOLD1.gif");
+		Icon icon = new ImageIcon(getClass().getResource("/Resources/GOLD1.gif"));
 		background = new JLabel(icon);
 		background.setLayout(null);
 		setContentPane(background);

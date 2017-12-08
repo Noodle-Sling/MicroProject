@@ -29,9 +29,9 @@ public class StartScreen extends JPanel {
 		setSize(500,500);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{160, 180, 160, 0};
-		gridBagLayout.rowHeights = new int[]{134, 54, 42, 55, 49, 55, 0};
+		gridBagLayout.rowHeights = new int[]{134, 54, 42, 55, 49, 55, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 1.0, 1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		//ImageIcon image = new ImageIcon("Resources/title1.jpg");
 		//title1 = image.getImage();
@@ -69,7 +69,7 @@ public class StartScreen extends JPanel {
 		panel2.setBackground(Color.LIGHT_GRAY);
 		panel2.setLayout(null);
 		GridBagConstraints gbc_panel2 = new GridBagConstraints();
-		gbc_panel2.insets = new Insets(0, 0, 0, 5);
+		gbc_panel2.insets = new Insets(0, 0, 5, 5);
 		gbc_panel2.fill = GridBagConstraints.BOTH;
 		gbc_panel2.gridx = 1;
 		gbc_panel2.gridy = 5;
@@ -81,11 +81,12 @@ public class StartScreen extends JPanel {
 		panel2.add(btnCalculator);
 		btnCalculator.setBorderPainted(false);
 		
+		JLabel lblSpecialThanksTo = new JLabel("SPECIAL THANKS TO KYLE DOWNIE");
+		GridBagConstraints gbc_lblSpecialThanksTo = new GridBagConstraints();
+		gbc_lblSpecialThanksTo.gridwidth = 6;
+		gbc_lblSpecialThanksTo.gridx = 0;
+		gbc_lblSpecialThanksTo.gridy = 8;
+		add(lblSpecialThanksTo, gbc_lblSpecialThanksTo);
+		
 	}
-
-//	@Override
-//	protected void paintComponent(Graphics g) {
-//		super.paintComponent(g);
-//			g.drawImage(title1,0,0,null);
-//	}
 }
